@@ -30,22 +30,22 @@ try:
 
 
 # 机场的地址
-url = os.environ.get('URL1')
+url1 = os.environ.get('URL1')
 # 配置用户名（一般是邮箱）
-email = os.environ.get('EMAIL1')
+email1 = os.environ.get('EMAIL1')
 # 配置用户名对应的密码 和上面的email对应上
-passwd = os.environ.get('PASSWD1')
+passwd1 = os.environ.get('PASSWD1')
 
-login_url = '{}/auth/login'.format(url)
-check_url = '{}/user/checkin'.format(url)
+login_url = '{}/auth/login'.format(url1)
+check_url = '{}/user/checkin'.format(url1)
 
 header = {
-        'origin': url,
+        'origin': url1,
         'user-agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36'
 }
 data = {
-        'email': email,
-        'passwd': passwd
+        'email': email1,
+        'passwd': passwd1
 }
 try:
     print('进行登录...')
