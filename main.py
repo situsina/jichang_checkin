@@ -6,7 +6,7 @@ url = os.environ.get('URL')
 # 配置用户名（一般是邮箱）
 email = os.environ.get('EMAIL')
 # 配置用户名对应的密码 和上面的email对应上
-passwd = os.environ.get('PASSWDD')
+passwd = os.environ.get('PASSWD')
 # server酱
 SCKEY = os.environ.get('SCKEY')
 
@@ -46,11 +46,11 @@ import requests, json, re, os
 
 session = requests.session()
 # 机场的地址
-url = os.environ.get('URLL')
+urll = os.environ.get('URLL')
 # 配置用户名（一般是邮箱）
-email = os.environ.get('EMAIL')
+emaill = os.environ.get('EMAILL')
 # 配置用户名对应的密码 和上面的email对应上
-passwd = os.environ.get('PASSWD')
+passwdd = os.environ.get('PASSWD')
 # server酱
 SCKEY = os.environ.get('SCKEY')
 
@@ -59,12 +59,12 @@ check_url = '{}/user/checkin'.format(url)
 
 
 header = {
-        'origin': url,
+        'origin': urll,
         'user-agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36'
 }
 data = {
-        'email': email,
-        'passwd': passwd
+        'email': emaill,
+        'passwd': passwdd
 }
 try:
     print('进行登录...')
