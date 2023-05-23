@@ -41,3 +41,45 @@ except:
     if SCKEY != '':
         push_url = 'https://sctapi.ftqq.com/{}.send?title=机场签到&desp={}'.format(SCKEY, content)
         requests.post(url=push_url)
+
+session = requests.session()
+# 机场的地址
+url = os.environ.get('URL1')
+# 配置用户名（一般是邮箱）
+email = os.environ.get('EMAIL1')
+# 配置用户名对应的密码 和上面的email对应上
+passwd = os.environ.get('PASSWD1')
+# server酱
+SCKEY = os.environ.get('SCKEY1')
+
+login_url = '{}/auth/login'.format(url1)
+check_url = '{}/user/checkin'.format(url1)
+
+
+header = {
+        'origin': url,
+        'user-agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36'
+}
+data = {
+        'email1': email,
+        'passwd1': passwd
+}
+try:
+    print('进行登录...')
+    response = json.loads(session.post(url=login_url,headers=header,data=data).text)
+    print(response['msg'])
+    # 进行签到
+    result = json.loads(session.post(url=check_url,headers=header).text)
+    print(result['msg'])
+    content = result['msg']
+    # 进行推送
+    if SCKEY != '':
+        push_url = 'https://sctapi.ftqq.com/{}.send?title=机场签到&desp={}'.format(SCKEY, content)
+        requests.post(url=push_url)
+        print('推送成功')
+except:
+    content = '签到失败'
+    print(content)
+    if SCKEY != '':
+        push_url = 'https://sctapi.ftqq.com/{}.send?title=机场签到&desp={}'.format(SCKEY, content)
+        requests.post(url=push_url)
