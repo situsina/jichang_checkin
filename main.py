@@ -44,7 +44,7 @@ except:
 
 session = requests.session()
 # 机场的地址
-url = os.environ.get('URL1')
+url1 = os.environ.get('URL1')
 # 配置用户名（一般是邮箱）
 email = os.environ.get('EMAIL1')
 # 配置用户名对应的密码 和上面的email对应上
@@ -52,8 +52,8 @@ passwd = os.environ.get('PASSWD1')
 # server酱
 SCKEY = os.environ.get('SCKEY1')
 
-login_url = '{}/auth/login'.format(url1)
-check_url = '{}/user/checkin'.format(url1)
+login_url1 = '{}/auth/login'.format(url)
+check_url1 = '{}/user/checkin'.format(url)
 
 
 header = {
@@ -66,10 +66,10 @@ data = {
 }
 try:
     print('进行登录...')
-    response = json.loads(session.post(url=login_url,headers=header,data=data).text)
+    response = json.loads(session.post(url=login_url1,headers=header,data=data).text)
     print(response['msg'])
     # 进行签到
-    result = json.loads(session.post(url=check_url,headers=header).text)
+    result = json.loads(session.post(url=check_url1,headers=header).text)
     print(result['msg'])
     content = result['msg']
     # 进行推送
