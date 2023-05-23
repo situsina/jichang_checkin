@@ -28,7 +28,7 @@ try:
     print(result['msg'])
     content = result['msg']
 
-session = requests.session()
+
 # 机场的地址
 url = os.environ.get('URL1')
 # 配置用户名（一般是邮箱）
